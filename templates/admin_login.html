@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Work Force</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Admin Sign In</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Enter Admin Username" required><br>
+            <input type="email" name="email" placeholder="Enter Admin Email" required><br>
+            <input type="password" name="password" placeholder="Enter Password" required><br>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p>
+            <a href="{{ url_for('forgot_password') }}">Forgot Password?</a>
+        </p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for msg in messages %}
+              <li style="color:red">{{ msg }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

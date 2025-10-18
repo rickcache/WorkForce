@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Employee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #CFD3E9;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            border: 2px solid black;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+            background: #E6DC51;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: none;
+            background: #E6DC51;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #D4C542;
+        }
+
+        a {
+            margin-top: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Edit Employee: {{ emp.name }}</h1>
+
+        <form method="POST">
+            <input type="text" name="name" value="{{ emp.name }}" placeholder="Full Name" required>
+            <input type="email" name="email" value="{{ emp.email }}" placeholder="Email" required>
+            <input type="text" name="phone" value="{{ emp.phone }}" placeholder="Phone Number" required>
+            <input type="text" name="address" value="{{ emp.address }}" placeholder="Address" required>
+            <button type="submit">Save Changes</button>
+        </form>
+
+        <a href="{{ url_for('edit_employee_list') }}">Back to Employee List</a>
+    </div>
+
+</body>
+</html>

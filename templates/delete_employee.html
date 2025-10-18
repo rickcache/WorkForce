@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Employee</title>
+
+     <style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .container {
+        background: #fff;
+        border: 2px solid black;
+        border-radius: 12px;
+        padding: 30px;
+        width:800px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+        margin-bottom: 20px;
+    }
+
+    .employee-box {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 12px 15px;
+        margin: 10px 0;
+        background: #fafafa;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .employee-box p {
+        margin: 0;
+        font-size: 15px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .employee-box form button {
+        background: #E6DC51;
+        border: none;
+        border-radius: 6px;
+        padding: 6px 12px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.2s ease;
+    }
+
+    .employee-box form button:hover {
+        background: #d4ca47;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    ul li {
+        padding: 8px 12px;
+        border-radius: 6px;
+    }
+
+    ul li.success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    ul li.error {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+</style>
+</head>
+<body>
+    <h1>Delete Employee</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <li style="color: {% if category == 'error' %}red{% else %}green{% endif %};">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <div class="container">
+    {% for emp in employees %}
+        <div class="employee-box">
+            <p><strong>ID:</strong> {{ emp.id }} | <strong>Name:</strong> {{ emp.name }} | <strong>Email:</strong> {{ emp.email }}</p>
+            <form action="{{ url_for('delete_employee') }}" method="POST" onsubmit="return confirm('Are you sure you want to delete {{ emp.name }}?');">
+                <input type="hidden" name="emp_id" value="{{ emp.id }}">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

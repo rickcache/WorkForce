@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
+    <style>
+        
+    .heading-cover {
+        background: #E6DC51; /* semi-transparent white box */
+        padding: 6px 6px;                     /* spacing inside the box */
+        border-radius: 8px;                     /* rounded corners */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* subtle shadow */
+        margin: 0;    
+    }
+
+     .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #e6dc51; /* yellow */
+    color: #000;
+    padding: 20px 60px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.25);
+    width: 100%;          /* make it stretch across the viewport */
+    position: fixed;      /* optional: navbar sticks on top */
+    top: 0;               /* only needed with fixed */
+    left: 0;              /* only needed with fixed */
+    box-sizing: border-box; /* include padding in width */
+    z-index: 1000;        /* stay above other content */
+}
+
+
+.navbar .nav-logo {
+    border: 1px solid #808080; /* gray border */
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-family: 'Jacques Francois', serif;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.navbar .nav-links a {
+    color: #000; /* Black links */
+}
+
+.navbar .nav-links a:hover {
+    color: #757575; /* Dark gray hover */
+}
+    </style>
+</head>
+<body>
+      
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">Work Force</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+        </div>
+    </nav> <br>
+
+
+    <br>
+    <br>
+    <br>
+      <h1>Welcome, {{ admin_username }}</h1>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Header -->
+    <header class="header">
+        <h1 style="text-align: left;">Logged in as Admin</h1>
+    </header>
+
+    <!-- Employees Section -->
+    <section class="section">
+        <div class="section-box">
+            <h2 class="heading-cover">EMPLOYEES</h2>
+            <div class="cards">
+                <div class="card hover">
+                    <a href="{{ url_for('employee_list') }}">
+                    <img src="{{ url_for('static', filename='images/employee_list.jpg') }}" alt="Employee List">
+                    <p>EMPLOYEE LIST</p>
+                    </a>
+                </div>
+                <div class="card hover">
+                    <a href="{{ url_for('register_employee') }}">
+                    <img src="{{ url_for('static', filename='images/register_employee.jpg') }}" alt="Register Employee">
+                    <p>REGISTER EMPLOYEE</p>
+                    </a>
+                </div>
+                <div class="card hover">
+                    <a href="{{ url_for('delete_employee_page') }}">
+                    <img src="{{ url_for('static', filename='images/delete_employee.jpg') }}" alt="Delete Employee">
+                    <p>DELETE EMPLOYEE</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Actions Section -->
+    <section class="section">
+        <div class="section-box">
+            <h2 class="heading-cover">ACTIONS</h2>
+            <div class="cards">
+                <div class="card hover">
+                    <a href="{{ url_for('edit_employee_list')}}">
+                    <img src="{{ url_for('static', filename='images/edit_employee.jpg') }}" alt="Edit Employee">
+                    <p>EDIT EMPLOYEE</p>
+                    </a>
+                </div>
+                <div class="card hover">
+                    <a href="{{ url_for('logout')}}">
+                    <img src="{{ url_for('static', filename='images/logout.jpg') }}" alt="Logout">
+                    <p>LOGOUT</p>
+                    </a>
+                </div>
+                <div class="card hover">
+                    <a href="{{ url_for('manage_leave')}}">
+                    <img src="{{ url_for('static', filename='images/manage_leave.jpg') }}" alt="Manage Leave">
+                    <p>MANAGE LEAVE</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

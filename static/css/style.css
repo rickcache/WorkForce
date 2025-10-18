@@ -1,0 +1,230 @@
+/* === Global Reset === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+/* === Navbar === */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #e6dc51; /* Yellow tone from design */
+    color: #000;
+    padding: 20px 60px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.25);
+}
+
+.navbar .nav-logo {
+    font-family: 'Jacques Francois', serif;
+    font-size: 32px;
+    font-weight: 400;
+    border: 1px solid #808080;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.navbar .nav-links a {
+    color: #000;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.navbar .nav-links a:hover {
+    color: #757575;
+}
+
+/* === Hero Section === */
+.hero {
+    height: 40vh;
+    background: #cfd3e9;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-buttons .btn {
+    background: #e6dc51;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 18px;
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+.hero-buttons .btn:hover {
+    background: #d9cf48;
+}
+
+.btn-admin {
+    background: #757575;
+    border: 1px solid #000;
+    color: #fff;
+}
+
+.btn-admin:hover {
+    background: #5c5c5c;
+}
+
+/* === About Section === */
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: #f8f2f2;
+    border: 1px solid #0d0a0a;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    min-height: 200px;
+    padding: 100px 50px;
+    gap: 60px;
+}
+
+.about-image img {
+    width: 500px;
+    border-radius: 14px;
+    background: #fffefe;
+    backdrop-filter: blur(2.5px);
+}
+
+.about-text {
+    max-width: 600px;
+}
+
+.about-text h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.about-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* === Footer === */
+footer {
+    background: #e6dc51;
+    padding: 60px 20px;
+    text-align: center;
+    color: #000;
+}
+
+footer h3 {
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-subscribe {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.footer-subscribe input[type="email"] {
+    background: #f8f2f2;
+    border: 1px solid #0d0a0a;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    border-radius: 14px;
+    padding: 12px 18px;
+    font-size: 15px;
+    width: 280px;
+    outline: none;
+}
+
+.footer-subscribe .subscribe-btn {
+    background: #e6dc51;
+    border: 1px solid #000;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.footer-subscribe .subscribe-btn:hover {
+    background: #d9cf48;
+}
+
+footer p {
+    font-size: 13px;
+    color: #000;
+}
+
+/* === Login Page Styling === */
+.login-container {
+    width: 400px;
+    max-width: 90%;
+    margin: 100px auto;
+    padding: 40px;
+    background: #ffffff;
+    border: 1px solid #000;
+    border-radius: 14px;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    text-align: center;
+}
+
+.login-container h2 {
+    color: #000;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 14px;
+    border: 1px solid #110101;
+    background: #f8f2f2;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    font-size: 16px;
+}
+
+.login-container .btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background: #e6dc51;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+}
+
+.login-container .btn:hover {
+    background: #d9cf48;
+}
+
+.login-container a {
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+

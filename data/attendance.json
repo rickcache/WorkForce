@@ -1,0 +1,37 @@
+[
+    {
+        "id": "EMP004",
+        "records": {
+            "2025-10-17": {
+                "status": "Present",
+                "hours": 0
+            }
+        }
+    },
+    {
+        "id": "EMP005",
+        "records": {
+            "2025-10-17": {
+                "status": "Present",
+                "hours": 0
+            }
+        }
+    },
+    {
+        "id": "2001",
+        "records": {
+            "2025-10-17": {
+                "status": "Present",
+                "hours": 0
+            },
+            "2025-10-18": "Present"
+        }
+    },
+    {
+        "id": "EMP006",
+        "name": "dafnee keen",
+        "records": {
+            "2025-10-18": "Present"
+        }
+    }
+]

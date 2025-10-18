@@ -1,0 +1,45 @@
+[
+    {
+        "id": "EMP001",
+        "name": "Rahul Sharma",
+        "start_date": "2025-10-18",
+        "end_date": "2025-10-20",
+        "reason": "Family function",
+        "status": "Approved"
+    },
+    {
+        "id": "EMP002",
+        "name": "Priya Das",
+        "start_date": "2025-10-22",
+        "end_date": "2025-10-25",
+        "reason": "Medical leave",
+        "status": "Approved"
+    },
+    {
+        "id": "EMP003",
+        "name": "Amit Singh",
+        "start_date": "2025-10-10",
+        "end_date": "2025-10-11",
+        "reason": "Traveling out of city",
+        "status": "Approved"
+    },
+    {
+        "id": 4,
+        "employee_id": "2001",
+        "employee_name": null,
+        "from_date": "2025-10-18",
+        "to_date": "2025-10-19",
+        "reason": "SICK",
+        "status": "Approved",
+        "applied_on": "2025-10-17 19:11:31"
+    },
+    {
+        "employee_id": "EMP006",
+        "name": "dafnee keen",
+        "from_date": "2025-10-19",
+        "to_date": "2025-10-21",
+        "reason": "ssssssss",
+        "status": "Approved",
+        "applied_on": "2025-10-18"
+    }
+]

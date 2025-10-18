@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Force</title>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">Work Force</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="{{ url_for('login') }}">Sign In</a>
+            <a href="{{ url_for('admin_login') }}">Admin</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-buttons">
+            <a href="{{ url_for('login') }}" class="btn">Sign In</a>
+            <a href="{{ url_for('admin_login') }}" class="btn btn-admin">Admin</a>
+        </div>
+    </section>
+
+    <!-- About Company Section (Home Page Section) -->
+    <section class="about">
+        <div class="about-image">
+            <img src="{{ url_for('static', filename='images/company_photo.png') }}" alt="Company Photo">
+        </div>
+        <div class="about-text">
+            <h2>About Work Force</h2>
+            <p>
+                Work Force is a modern HRM system designed to manage employees efficiently. 
+                From tracking attendance and leaves to salary management, our platform ensures 
+                smooth operations and transparency. Join us and experience seamless workforce management!
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <h3>Subscribe to Work Force</h3>
+        <div class="footer-subscribe">
+            <input type="email" placeholder="Enter your email">
+            <button class="subscribe-btn">Subscribe</button>
+        </div>
+        <p>&copy; 2025 Work Force. All rights reserved.</p>
+    </footer>
+</body>
+</html>

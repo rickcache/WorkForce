@@ -1,0 +1,143 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #CFD3E9;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+.header {
+    width: 100%;
+    max-width: 1200px;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 28px;
+    color: #333;
+}
+
+/* Section styling */
+.section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.section-box {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-box h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #222;
+    width: 100%;
+    text-align: center;
+}
+
+/* Cards container inside section */
+.cards {
+    display: flex;
+    justify-content: center; /* Changed from space-between to center */
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 30px; /* Increased gap for better spacing */
+}
+
+/* Individual card */
+.card {
+    flex: 0 0 auto; /* Changed from flex: 1 to prevent uneven stretching */
+    width: 220px; /* Fixed width instead of min/max */
+    height: 250px;
+    background: rgba(229, 218, 64, 0.7); /* last value is opacity from 0 (transparent) to 1 (opaque) */
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid black;
+}
+
+.card img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+.card p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+
+    background: #E6DC51; /* semi-transparent white box */
+    padding: 6px 12px;                     /* spacing inside the box */
+    border-radius: 8px;                     /* rounded corners */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* subtle shadow */
+    margin: 0;    
+}
+
+/* Link styling for the card */
+.card a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Hover Effect */
+.card.hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    cursor: pointer;
+}
+
+
+    .flash {
+        padding: 10px 20px;
+        margin: 10px 0;
+        border-radius: 5px;
+    }
+    .flash.success { background-color: #d4edda; color: #155724; }
+    .flash.error { background-color: #f8d7da; color: #721c24; }
+    .flash.info { background-color: #cce5ff; color: #004085; }
+
+
+    .heading-cover {
+      background-color: E5DA40; /* your yellow */
+    padding: 15px 25px;
+    border-radius: 10px;
+    width: 60%;            /* decrease overall width */
+    max-width: 600px;       /* optional: prevent it from getting too wide */
+    margin: 20px auto;      /* centers it horizontally */
+    text-align: center;     /* center text inside */
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2); 
+    }

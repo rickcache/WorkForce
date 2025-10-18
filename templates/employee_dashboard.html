@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Dashboard</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #CFD3E9;
+      margin: 0;
+      padding: 40px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      background: #E6DC51;
+      padding: 10px 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .dashboard, .attendance-section, .time-background, .leave-container, .container {
+      background: #fff;
+      width: 90%;
+      max-width: 1000px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .time-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #E6DC51;
+      color: #333;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .time-box {
+      text-align: center;
+      flex: 1;
+    }
+
+    .time-box h2 {
+      margin: 0;
+      font-size: 18px;
+      opacity: 0.85;
+    }
+
+    .time-box p {
+      margin: 5px 0 0;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .logout-btn {
+      display: inline-block;
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    .logout-btn:hover {
+      background: #b02a37;
+    }
+
+    /* ATTENDANCE */
+    .attendance-section h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 35px);
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .day {
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+      border-radius: 50%;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* LEAVE REQUEST */
+    .leave-container h2, .leave-container h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .leave-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .leave-form .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .leave-form input,
+    .leave-form textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .leave-form button {
+      background: #E6DC51;
+      color: #333;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .leave-form button:hover {
+      background: #d9cd49;
+    }
+
+    .leave-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .leave-table th {
+      background-color: #E6DC51;
+      padding: 10px;
+    }
+
+    .leave-table th, .leave-table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    .status-approved {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .status-rejected {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .status-pending {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+
+    /* UPDATE PHONE FORM */
+    .container h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .container input {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    .container button {
+      background: #E6DC51;
+      color: #333;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    .container button:hover {
+      background: #d9cd49;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+
+    li {
+      font-weight: bold;
+    }
+        
+    .heading-cover {
+        background: #E6DC51; /* semi-transparent white box */
+        padding: 10px 10px;                     /* spacing inside the box */
+        border-radius: 8px;                     /* rounded corners */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* subtle shadow */
+        margin: 0;    
+    }
+
+   .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #e6dc51; /* yellow */
+    color: #000;
+    padding: 20px 60px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.25);
+    width: 100%;          /* make it stretch across the viewport */
+    position: fixed;      /* optional: navbar sticks on top */
+    top: 0;               /* only needed with fixed */
+    left: 0;              /* only needed with fixed */
+    box-sizing: border-box; /* include padding in width */
+    z-index: 1000;        /* stay above other content */
+}
+
+
+.navbar .nav-logo {
+    border: 1px solid #808080; /* gray border */
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-family: 'Jacques Francois', serif;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.navbar .nav-links a {
+    color: #000; /* Black links */
+}
+
+.navbar .nav-links a:hover {
+    color: #757575; /* Dark gray hover */
+}
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">Work Force</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+        </div>
+    </nav> <br>
+
+
+    <br><br>
+  <div>
+    <h1>Welcome</h1>
+  </div>
+
+  <!-- TIMER SECTION -->
+  <div class="dashboard"> 
+    <div class="time-section">
+      <div class="time-box">
+        <h2>TARGET TIME</h2>
+        <p>9 hrs</p>
+      </div>
+
+      <div class="time-box">
+        <h2>WORK TIMER</h2>
+        <p id="timer">00:00:00</p>
+      </div>
+
+      <div class="time-box">
+        <h2>LOGOUT</h2>
+        <a href="{{ url_for('employee_logout') }}" class="logout-btn">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let startTime = new Date().getTime();
+    function updateTimer() {
+      let now = new Date().getTime();
+      let diff = now - startTime;
+      let hours = Math.floor(diff / (1000 * 60 * 60));
+      let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById("timer").textContent =
+        String(hours).padStart(2, "0") + ":" +
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+    }
+    setInterval(updateTimer, 1000);
+  </script>
+
+  <!-- ATTENDANCE SECTION -->
+  <div class="attendance-section">
+    <div class="attendance-box">
+      <h2 class="heading-cover">ATTENDANCE</h2>
+      <div class="legend">
+        <span style="background-color: green; padding:5px; color:#fff;">Present</span>
+        <span style="background-color: red; padding:5px; color:#fff;">Absent</span>
+      </div>
+      <div class="calendar">
+        {% set today_date = today %}
+        {% for day in range(1, 32) %}
+          {% set date_str = '{}-{:02d}-{:02d}'.format(today.year, today.month, day) %}
+          {% if date_str in attendance %}
+            <span class="day" style="background-color: green;">{{ day }}</span>
+          {% else %}
+            <span class="day" style="background-color: red;">{{ day }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- LEAVE REQUEST SECTION -->
+  <div class="leave-container">
+    <h2 class="heading-cover">LEAVE REQUEST</h2>
+    <form action="{{ url_for('employee_apply_leave') }}" method="POST" class="leave-form">
+      <div class="form-group">
+        <label for="from_date">From Date:</label>
+        <input type="date" name="from_date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="to_date">To Date:</label>
+        <input type="date" name="to_date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="reason">Reason:</label>
+        <textarea name="reason" rows="3" placeholder="Enter your reason..." required></textarea>
+      </div>
+
+      <button type="submit">Apply Leave</button>
+    </form>
+
+    <hr>
+
+    <h3>YOUR LEAVE REQUESTS</h3>
+    <table class="leave-table">
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Reason</th>
+          <th>Status</th>
+          <th>Applied On</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for leave in leaves if leave.employee_id == employee.id %}
+        <tr class="status-{{ leave.status|lower }}">
+          <td>{{ leave.from_date }}</td>
+          <td>{{ leave.to_date }}</td>
+          <td>{{ leave.reason }}</td>
+          <td>{{ leave.status }}</td>
+          <td>{{ leave.applied_on }}</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="5">No leave requests found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- UPDATE PHONE SECTION -->
+  <div class="container">
+    <h3 class="heading-cover">UPDATE PHONE NUMBER</h3>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li style="color: {% if category == 'error' %}red{% else %}green{% endif %};">
+              {{ message }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('update_phone') }}" method="POST">
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" name="phone" value="{{ employee.phone|default('') }}" required>
+      <button type="submit">Update</button>
+    </form>
+  </div>
+
+</body>
+</html>

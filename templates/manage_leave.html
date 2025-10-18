@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Leave Requests</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #CFD3E9;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      background: #E6DC51;
+      padding: 10px 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    li {
+      font-weight: bold;
+    }
+
+    .leave-box {
+      border: 1px solid #000;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #FAFAFA;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: 0.2s ease;
+    }
+
+    .leave-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .leave-box p {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 8px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      transition: background 0.2s;
+      margin-top: 10px;
+    }
+
+    .approve-btn {
+      background-color: #4CAF50;
+    }
+
+    .approve-btn:hover {
+      background-color: #45a049;
+    }
+
+    .reject-btn {
+      background-color: #f44336;
+    }
+
+    .reject-btn:hover {
+      background-color: #e53935;
+    }
+
+    .status {
+      font-weight: bold;
+      padding: 5px 12px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .approved {
+      background-color: #c8e6c9;
+      color: #256029;
+    }
+
+    .rejected {
+      background-color: #ffcdd2;
+      color: #b71c1c;
+    }
+
+    .pending {
+      background-color: #fff9c4;
+      color: #827717;
+    }
+
+    p[style*="text-align:center"] {
+      font-weight: bold;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Manage Leave Requests</h1>
+
+  <div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li style="color: {% if category == 'error' %}red{% else %}green{% endif %};">
+              {{ message }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% if leaves %}
+      {% for leave in leaves %}
+        <div class="leave-box">
+          <p><strong>ID:</strong> {{ leave.id }}</p>
+          <p><strong>Name:</strong> {{ leave.name }}</p>
+          <p><strong>Start Date:</strong> {{ leave.start_date }}</p>
+          <p><strong>End Date:</strong> {{ leave.end_date }}</p>
+          <p><strong>Reason:</strong> {{ leave.reason }}</p>
+          <p>
+            <strong>Status:</strong>
+            <span class="status 
+              {% if leave.status == 'Approved' %}approved
+              {% elif leave.status == 'Rejected' %}rejected
+              {% else %}pending{% endif %}">
+              {{ leave.status }}
+            </span>
+          </p>
+
+          {% if leave.status == "Pending" %}
+          <form action="{{ url_for('update_leave') }}" method="POST">
+            <input type="hidden" name="emp_id" value="{{ leave.employee_id }}">
+            <input type="hidden" name="start_date" value="{{ leave.from_date }}">
+            <button type="submit" name="action" value="approve" class="approve-btn">Approve</button>
+            <button type="submit" name="action" value="reject" class="reject-btn">Reject</button>
+          </form>
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% else %}
+      <p style="text-align:center;">No leave requests found.</p>
+    {% endif %}
+  </div>
+
+</body>
+</html>

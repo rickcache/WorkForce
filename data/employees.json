@@ -1,0 +1,46 @@
+[
+    {
+        "id": "1001",
+        "username": "admin",
+        "password": "admin123",
+        "role": "admin",
+        "email": "admin@example.com",
+        "address": "Head Office",
+        "phone": "9999999999",
+        "name": ""
+    },
+    {
+        "id": "2001",
+        "username": "john_doe",
+        "password": "john123",
+        "role": "employee",
+        "email": "john@example.com",
+        "address": "Kolkata",
+        "phone": "9876543210"
+    },
+    {
+        "id": "EMP004",
+        "name": "mahesh",
+        "email": "mahesh@example.com",
+        "password": "mahesh123",
+        "role": "employee"
+    },
+    {
+        "id": "EMP005",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "password": "john123",
+        "address": "123 Elm Street",
+        "phone": "09007567325",
+        "role": "employee"
+    },
+    {
+        "id": "EMP007",
+        "name": "Rick Biswas",
+        "email": "rick@example.com",
+        "password": "rick123",
+        "address": "11 No School Road Barrackpore",
+        "phone": "09007567325",
+        "role": "employee"
+    }
+]

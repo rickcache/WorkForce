@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #CFD3E9;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            background: #E6DC51;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .section-box {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .employee-card {
+            background: #E6DC51;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .employee-card p {
+            margin: 0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .employee-card button {
+            background: #fff;
+            color: #333;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .employee-card button:hover {
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Edit Employees</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <li style="color: {% if category == 'error' %}red{% else %}green{% endif %};">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <div class="section-box">
+        {% for emp in employees %}
+            <div class="employee-card">
+                <p><strong>Name:</strong> {{ emp.name }} | <strong>Email:</strong> {{ emp.email }} | <strong>Phone:</strong> {{ emp.phone }}</p>
+                <a href="{{ url_for('edit_employee', emp_id=emp.id) }}">
+                    <button>Edit</button>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

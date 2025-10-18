@@ -1,0 +1,65 @@
+body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .employee-list {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .employee-card {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .employee-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .employee-info p {
+      margin: 3px 0;
+      font-weight: bold;
+    }
+
+    .delete-btn {
+      background-color: #e74c3c;
+      border: none;
+      padding: 10px 15px;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .delete-btn:hover {
+      background-color: #c0392b;
+    }
+
+    .flash {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .flash.success {
+      color: green;
+    }
+
+    .flash.error {
+      color: red;
+    }
